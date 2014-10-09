@@ -34,22 +34,33 @@ public class BreakListDown {
             }
         }
      String NoOfPeople[] = new String[i]; 
-     String Table1[][] = new String[i][8]; 
+     String Table1[][] = new String[i][7]; 
      int li=0;
         for (String perString : fromList) {
             
             Person lol = new Person(perString);
-            Table1[li][0]= String.valueOf(li);
+            Table1[li][0]= String.valueOf(li+1);
             Table1[li][1]= lol.getName();
             Table1[li][2]= String.valueOf(lol.getAdmin());
-            Table1[li][4]= String.valueOf(lol.getAnalyzer());
-            Table1[li][5]= String.valueOf(lol.getCreator());
-            Table1[li][6]= String.valueOf(lol.getFinisher());
-            Table1[li][7]= "null";
+            Table1[li][3]= String.valueOf(lol.getAnalyzer());
+            Table1[li][4]= String.valueOf(lol.getCreator());
+            Table1[li][5]= String.valueOf(lol.getFinisher());
+            Table1[li][6]= "null";
             li++;
             
             
                     }
+        for (int j = 0; j < 7; j++) {
+            System.out.print(Table1[j][0]);
+            System.out.print(Table1[j][1]);
+            System.out.print(Table1[j][2]);
+            System.out.print(Table1[j][3]);
+            System.out.print(Table1[j][4]);
+            System.out.print(Table1[j][5]);
+            System.out.println(Table1[j][6]);
+            
+            
+        }
        
             }
 //            public ArrayList<String> Names(){
