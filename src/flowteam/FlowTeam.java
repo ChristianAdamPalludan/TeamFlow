@@ -18,17 +18,20 @@ public class FlowTeam extends javax.swing.JFrame {
      * Creates new form FlowTeam Making a test
      */
     ControlEngine controlEngine;
+
     public FlowTeam() {
         initComponents();
         controlEngine = new ControlEngine();
-    //create the model and add elements
-    DefaultListModel<String> listModel = new DefaultListModel<>();//Works like an arraylist
-    ArrayList<Person> personList = controlEngine.giveMeAllPeopleList();
-    for (Person p : personList){
-        listModel.addElement(p.toString());
-    }
-    jList1.setModel(listModel);
-    jList1.setSelectedIndex(4);
+        //create the model and add elements
+        DefaultListModel<String> listModel = new DefaultListModel<>();//Works like an arraylist
+        ArrayList<Person> personList = controlEngine.giveMeAllPeopleList();
+        for (Person p : personList) {
+            listModel.addElement(p.getName());
+        }
+        jList1.setModel(listModel);
+        jList1.setSelectedIndex(3);
+        int a = jList1.getSelectedIndex();
+        jTextArea1.setText(personList.get(a).toString());
 //    listModel.addElement("USA");
 //    listModel.addElement("India");
 //    listModel.addElement("Vietnam");

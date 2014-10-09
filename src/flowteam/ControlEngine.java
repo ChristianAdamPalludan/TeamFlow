@@ -14,20 +14,21 @@ import java.util.ArrayList;
 public class ControlEngine {
 
     private ArrayList<Person> enginePersonList;
-    
+
     public ControlEngine() {
-        
+
         enginePersonList = new ArrayList<Person>();
         ArrayList<String> stringPersonList = FileHandlerStat.load("people.txt");
-            for(String stringPerson : stringPersonList){
-                Person tempPerson = new Person(stringPerson);
-                enginePersonList.add(tempPerson);
-            }
+        for (String stringPerson : stringPersonList) {
+            Person tempPerson = new Person(stringPerson);
+            enginePersonList.add(tempPerson);
+        }
     }
 
-    private void loadPeopleFromFile(){
-        
+    private void loadPeopleFromFile() {
+
     }
+
     public ArrayList<Person> giveMeAllPeopleList() {
         return enginePersonList;
 
