@@ -5,6 +5,7 @@
  */
 package flowteam;
 
+import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 
 /**
@@ -16,21 +17,29 @@ public class FlowTeam extends javax.swing.JFrame {
     /**
      * Creates new form FlowTeam Making a test
      */
+    ControlEngine controlEngine;
     public FlowTeam() {
         initComponents();
+        controlEngine = new ControlEngine();
     //create the model and add elements
     DefaultListModel<String> listModel = new DefaultListModel<>();//Works like an arraylist
-    listModel.addElement("USA");
-    listModel.addElement("India");
-    listModel.addElement("Vietnam");
-    listModel.addElement("Canada");
-    listModel.addElement("Denmark");
-    listModel.addElement("France");
-    listModel.addElement("Great Britain");
-    listModel.addElement("Japan");
-    listModel.addElement("Greece");
-    jList1.setModel(listModel); //adds the listmodel to the Jlist
-    jList1.setSelectedIndex(0); //Sets the default selected entry to the 0th
+    ArrayList<Person> personList = controlEngine.giveMeAllPeopleList();
+    for (Person p : personList){
+        listModel.addElement(p.toString());
+    }
+    jList1.setModel(listModel);
+    jList1.setSelectedIndex(4);
+//    listModel.addElement("USA");
+//    listModel.addElement("India");
+//    listModel.addElement("Vietnam");
+//    listModel.addElement("Canada");
+//    listModel.addElement("Denmark");
+//    listModel.addElement("France");
+//    listModel.addElement("Great Britain");
+//    listModel.addElement("Japan");
+//    listModel.addElement("Greece");
+//    jList1.setModel(listModel); //adds the listmodel to the Jlist
+//    jList1.setSelectedIndex(0); //Sets the default selected entry to the 0th
     }
 
     /**
