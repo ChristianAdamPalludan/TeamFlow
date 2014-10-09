@@ -30,17 +30,14 @@ public class BreakListDown {
             for(String peopleString : fromList){
                 
                 i++;
-                System.out.println(peopleString);
-                Person tempPerson = new Person( peopleString);
-                listPeople.add(tempPerson);
-                System.out.println(peopleString);
+                
             }
         }
      String NoOfPeople[] = new String[i]; 
-     String Table1[][] = new String[i][7]; 
+     String Table1[][] = new String[i][8]; 
      int li=0;
-        for (String perString : NoOfPeople) {
-            li++;
+        for (String perString : fromList) {
+            
             Person lol = new Person(perString);
             Table1[li][0]= String.valueOf(li);
             Table1[li][1]= lol.getName();
@@ -49,6 +46,7 @@ public class BreakListDown {
             Table1[li][5]= String.valueOf(lol.getCreator());
             Table1[li][6]= String.valueOf(lol.getFinisher());
             Table1[li][7]= "null";
+            li++;
             
             
                     }
