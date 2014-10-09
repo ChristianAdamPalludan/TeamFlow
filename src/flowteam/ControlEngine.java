@@ -6,6 +6,7 @@
 package flowteam;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -32,6 +33,17 @@ public class ControlEngine {
     public ArrayList<Person> giveMeAllPeopleList() {
         return enginePersonList;
 
+    }
+    public String getSelectedPerson_stats(String selected){
+        String result = "";
+        for (Person tempPerson : enginePersonList) {
+            if(tempPerson.getName().equals(selected)){  
+                
+                result = tempPerson.getNiceGuiString();
+            }
+        }
+        
+        return result;
     }
 
 }

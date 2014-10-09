@@ -27,6 +27,11 @@ public class Person {
         this.creator = creator;
     }
 
+    public String getNiceGuiString(){
+        return name + ": \nAdmin: " + admin + "\nFinisher: " + finisher + 
+                "\nAnalyzer: " + analyzer + "\nCreator:" + creator; 
+    }
+    
     
      public String toString(){
     return name + "," + admin + "," + finisher + "," + analyzer + "," + creator;
