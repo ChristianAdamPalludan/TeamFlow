@@ -45,6 +45,7 @@ public class Load_and_Save {
         ArrayList<String> fromTheDeadList = new ArrayList<String>();
         fromTheDeadList = FileHandlerStat.load("people.txt");
         if(fromTheDeadList == null){
+            
             System.out.println("Something went wrong... load returned null");   
         }
         else{
