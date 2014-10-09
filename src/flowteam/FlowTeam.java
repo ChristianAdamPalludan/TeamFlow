@@ -121,7 +121,9 @@ public class FlowTeam extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddActionPerformed
-        // TODO add your handling code here:
+        EnterNewPerson newPerson = new EnterNewPerson(ControlEngine);
+        
+// TODO add your handling code here:
     }//GEN-LAST:event_jButtonAddActionPerformed
 
     int count = 0;

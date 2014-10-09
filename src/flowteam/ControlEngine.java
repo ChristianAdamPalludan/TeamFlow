@@ -34,6 +34,12 @@ public class ControlEngine {
         return enginePersonList;
 
     }
+    
+        public void createNewPerson(String name, int adminscore, int analyzerscore, int finaliserscore, int creatorscore){
+            Person p = new Person(name, adminscore, analyzerscore, finaliserscore, creatorscore);
+            
+        }
+    
     public String getSelectedPerson_stats(String selected){
         String result = "";
         for (Person tempPerson : enginePersonList) {
