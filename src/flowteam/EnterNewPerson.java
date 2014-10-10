@@ -6,19 +6,26 @@
 
 package flowteam;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Adam
  */
 public class EnterNewPerson extends javax.swing.JFrame {
-ControlEngine newPerson_ControlEngine;
+public ControlEngine newPerson_ControlEngine;
+public FlowTeam flowteam;
+
     /**
      * Creates new form EnterNewPerson
      */
     public EnterNewPerson(ControlEngine incomingRef, FlowTeam incomingFlowTeam) {
         newPerson_ControlEngine = incomingRef;
+        flowteam = incomingFlowTeam;
+       
         initComponents();
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -39,7 +46,8 @@ ControlEngine newPerson_ControlEngine;
         jLabel4 = new javax.swing.JLabel();
         jTextField5 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jButtonDone = new javax.swing.JButton();
+        jButtonSave = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -53,10 +61,22 @@ ControlEngine newPerson_ControlEngine;
 
         jLabel5.setText("Creator");
 
-        jButton1.setText("Done");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonDone.setText("Done");
+        jButtonDone.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonDoneMouseClicked(evt);
+            }
+        });
+        jButtonDone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonDoneActionPerformed(evt);
+            }
+        });
+
+        jButtonSave.setText("Save");
+        jButtonSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSaveActionPerformed(evt);
             }
         });
 
@@ -65,36 +85,44 @@ ControlEngine newPerson_ControlEngine;
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(8, 8, 8)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(35, 35, 35)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(8, 10, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(33, 33, 33)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(70, 70, 70)))
-                .addGap(0, 232, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(23, 23, 23)
-                        .addComponent(jTextField5))
+                                .addComponent(jLabel1)
+                                .addGap(35, 35, 35)
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addGap(33, 33, 33)
+                                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(70, 70, 70))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4))
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton1))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel5)
+                                        .addGap(23, 23, 23)
+                                        .addComponent(jTextField5))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel3)
+                                            .addComponent(jLabel4))
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(44, 44, 44)
+                                .addComponent(jButtonSave)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(18, 18, 18)
+                .addComponent(jButtonDone)
+                .addGap(0, 155, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -120,14 +148,16 @@ ControlEngine newPerson_ControlEngine;
                     .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addGap(46, 46, 46)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonDone)
+                    .addComponent(jButtonSave))
                 .addContainerGap(76, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonDoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDoneActionPerformed
         String name = jTextField1.getText();
         int adminscore = Integer.parseInt(jTextField2.getText());
         int analyzerscore = Integer.parseInt(jTextField3.getText());
@@ -135,10 +165,44 @@ ControlEngine newPerson_ControlEngine;
         int creatorscore = Integer.parseInt(jTextField5.getText());
         
         newPerson_ControlEngine.createNewPerson(name, adminscore, analyzerscore, finisherscore, creatorscore);
-        EnterNewPerson newPerson = new EnterNewPerson
-        newPerson.setVisible(true);
+        flowteam.updateYourSelf();
+                // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonDoneActionPerformed
+
+    private void jButtonDoneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonDoneMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        this.setVisible(false);
+                
+                
+      
+    }//GEN-LAST:event_jButtonDoneMouseClicked
+
+    private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
+        String name = jTextField1.getText();
+        String ad = jTextField2.getText();
+        String an = jTextField3.getText();
+        String fi = jTextField4.getText();
+        String cr = jTextField5.getText();
+        String pers = (name+","+ad+","+an+","+fi+","+cr+"\n") ;
+        Person person =new Person(pers);
+        ControlEngine en= new ControlEngine();
+        en.savehim(person);
+        ArrayList<String> fromDead = FileHandlerStat.load("people.txt");
+        ArrayList<String> tempP = new ArrayList<String>();
+        for (String string : fromDead) {
+            
+            //String hi = {jTextField1.getText()+jTextField2.getText()+jTextField3.getText()+jTextField4.getText()+jTextField5.getText()};
+            tempP.add(string);
+            
+        }
+        tempP.add(pers);
+        
+        FileHandlerStat.savePersons(tempP, "people.txt");
+              
+        
+        //FileHandlerStat.savePersons( null , "people.txt");
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonSaveActionPerformed
 
     /**
      * @param args the command line arguments
@@ -170,13 +234,14 @@ ControlEngine newPerson_ControlEngine;
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EnterNewPerson().setVisible(true);
+                //new EnterNewPerson().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButtonDone;
+    private javax.swing.JButton jButtonSave;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

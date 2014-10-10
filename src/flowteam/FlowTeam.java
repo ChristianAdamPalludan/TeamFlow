@@ -21,15 +21,9 @@ public class FlowTeam extends javax.swing.JFrame {
 
     public FlowTeam() {
         initComponents();
+        
         controlEngine = new ControlEngine();
-        //create the model and add elements
-        DefaultListModel<String> listModel = new DefaultListModel<>();//Works like an arraylist
-        ArrayList<Person> personList = controlEngine.giveMeAllPeopleList();
-        for (Person p : personList) {
-            listModel.addElement(p.getName());
-        }
-        jList1.setModel(listModel);
-        jList1.setSelectedIndex(3);
+        updateYourSelf();
 //        int a = jList1.getSelectedIndex();
 //        jTextArea1.setText(personList.get(a).toString());
         
@@ -39,6 +33,18 @@ public class FlowTeam extends javax.swing.JFrame {
 //    jList1.setSelectedIndex(0); //Sets the default selected entry to the 0th
     }
 
+    public void updateYourSelf()
+    {
+        //create the model and add elements
+         DefaultListModel<String> listModel = new DefaultListModel<>();//Works like an arraylist
+        //Add real people:
+        ArrayList<Person> personList = controlEngine.giveMeAllPeopleList();
+        for (Person p : personList) {
+            listModel.addElement( p.getName() ); //Picking out the name
+        }
+        jList1.setModel(listModel); //adds the listmodel to the Jlist        
+        jList1.setSelectedIndex(0);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -48,21 +54,14 @@ public class FlowTeam extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButtonAdd = new javax.swing.JButton();
         jButtonEdit = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
+        jButtonAdd = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jButtonAdd.setText("Add new");
-        jButtonAdd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAddActionPerformed(evt);
-            }
-        });
 
         jButtonEdit.setText("Edit");
 
@@ -87,6 +86,13 @@ public class FlowTeam extends javax.swing.JFrame {
         jTextArea1.setRows(5);
         jScrollPane3.setViewportView(jTextArea1);
 
+        jButtonAdd.setText("Add new");
+        jButtonAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAddActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -96,10 +102,9 @@ public class FlowTeam extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jButtonAdd)
-                        .addComponent(jButtonEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButtonEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonAdd))
                 .addContainerGap(170, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -120,13 +125,6 @@ public class FlowTeam extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddActionPerformed
-        EnterNewPerson newPerson = new EnterNewPerson(ControlEngine);
-        
-// TODO add your handling code here:
-    }//GEN-LAST:event_jButtonAddActionPerformed
-
-    int count = 0;
     private void jList1ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jList1ValueChanged
 
        
@@ -135,13 +133,18 @@ public class FlowTeam extends javax.swing.JFrame {
     }//GEN-LAST:event_jList1ValueChanged
 
     private void jList1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList1MouseClicked
-        count++;
         
         String selected = jList1.getSelectedValue().toString();
         jTextArea1.setText(controlEngine.getSelectedPerson_stats(selected));
         
 // TODO add your handling code here:
     }//GEN-LAST:event_jList1MouseClicked
+
+    private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddActionPerformed
+        EnterNewPerson newPerson = new EnterNewPerson( controlEngine, this  );
+        newPerson.setVisible(true);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonAddActionPerformed
 
     /**
      * @param args the command line arguments

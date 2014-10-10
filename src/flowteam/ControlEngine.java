@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
  */
 public class ControlEngine {
 
-    private ArrayList<Person> enginePersonList;
+    public ArrayList<Person> enginePersonList;
 
     public ControlEngine() {
 
@@ -27,7 +27,15 @@ public class ControlEngine {
     }
 
     private void loadPeopleFromFile() {
+        ArrayList<String> stringPersonList =  FileHandlerStat.load("people.txt");
+        for (String stringPerson : stringPersonList) {
+            Person tempPerson = new Person( stringPerson );//Contructor a string and make a Person object
+            enginePersonList.add(tempPerson);
+        }  
 
+    }
+    public void savehim(Person a){
+        enginePersonList.add(a);
     }
 
     public ArrayList<Person> giveMeAllPeopleList() {
@@ -37,11 +45,11 @@ public class ControlEngine {
     
         public void createNewPerson(String name, int adminscore, int analyzerscore, int finaliserscore, int creatorscore){
             Person p = new Person(name, adminscore, analyzerscore, finaliserscore, creatorscore);
-            
+            enginePersonList.add(p);
         }
     
     public String getSelectedPerson_stats(String selected){
-        String result = "";
+        String result = "Empty";
         for (Person tempPerson : enginePersonList) {
             if(tempPerson.getName().equals(selected)){  
                 

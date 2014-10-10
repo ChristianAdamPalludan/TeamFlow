@@ -28,11 +28,9 @@
               <Component id="jScrollPane2" min="-2" pref="146" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jButtonAdd" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButtonEdit" min="-2" pref="75" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="jButtonEdit" min="-2" pref="75" max="-2" attributes="0"/>
                   <Component id="jScrollPane3" min="-2" pref="301" max="-2" attributes="0"/>
+                  <Component id="jButtonAdd" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="170" max="32767" attributes="0"/>
           </Group>
@@ -58,14 +56,6 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="jButtonAdd">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Add new"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonAddActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JButton" name="jButtonEdit">
       <Properties>
         <Property name="text" type="java.lang.String" value="Edit"/>
@@ -112,5 +102,13 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JButton" name="jButtonAdd">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Add new"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonAddActionPerformed"/>
+      </Events>
+    </Component>
   </SubComponents>
 </Form>
